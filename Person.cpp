@@ -48,9 +48,10 @@ string Person::GetStreetName() {
 }
 
 void Person::GetInfo() {
-  cout << "---Person 1---" << endl;
+  cout << "--------" << endl;
   cout << "Name: " << GetName() << endl;
-  cout <<
+  cout << "Age: " << GetAge() << endl;
+  cout << "Street Name: " << GetStreetName() << endl;
 }
 // Class testing to follow 
 int main() {
@@ -60,19 +61,20 @@ int main() {
   string street;
   Person person;
 
-  cout << "firstName: ";
+  cout << "First Name: ";
   cin >> firstName;
-  cout << endl;
   cout << "Last Name: ";
   cin >> lastName;
-  cout << endl << "Age: ";
+  cout << "Age: ";
   cin >> age;
-  cout << endl << "StreetName: ";
+  cout << "Street Name: ";
+  cin.ignore();
   getline(cin, street);
   person.SetFirst(firstName);
   person.SetLast(lastName);
   person.SetAge(age);
   person.SetAddress(street);
+  person.GetInfo();
 
 
 
