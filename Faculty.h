@@ -1,10 +1,7 @@
 #ifndef FACULTY_H
 #define FACULTY_H
-#include<iostream>
-#include<string>
-#include<vector>
-using namespace std;
 #include "CollegeEmployee.h"
+using namespace std;
 
 class Faculty : public CollegeEmployee {
   public:
