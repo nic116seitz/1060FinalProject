@@ -1,23 +1,7 @@
 #include<iostream>
 #include<string>
 using namespace std;
-
-class Person {
-  private:
-    string firstName;
-    string lastName;
-    int age;
-    string streetName;
-  public:
-    void SetFirst(string inFirst);
-    void SetLast(string inLast);
-    void SetAge(int inAge);
-    void SetAddress(string inAddress);
-    string GetName();  
-    int GetAge();
-    string GetStreetName();
-    void GetInfo();
-};
+#include "Person.h"
 
 void Person::SetFirst(string inFirst) {
   firstName = inFirst;

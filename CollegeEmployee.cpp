@@ -1,0 +1,15 @@
+#include<iostream>
+#include<string>
+#include"CollegeEmployee.h"
+using namespace std;
+
+void CollegeEmployee::SetSSN(string inSSN) {
+  ssn = inSSN;
+}
+
+void CollegeEmployee::SetAnnualComp(int inComp) {
+  annualComp = inComp;
+}
+void CollegeEmployee::SetDepartmentNames(vector<string> deptNames) {
+  
+}
