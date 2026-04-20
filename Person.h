@@ -10,13 +10,13 @@ class Person {
     int age;
     string streetName;
   public:
-    virtual void SetFirst(string inFirst);
-    virtual void SetLast(string inLast);
-    virtual void SetAge(int inAge);
-    virtual void SetAddress(string inAddress);
-    virtual string GetName();  
-    virtual int GetAge();
-    virtual string GetStreetName();
+    void SetFirst(string inFirst);
+    void SetLast(string inLast);
+    void SetAge(int inAge);
+    void SetAddress(string inAddress);
+    string GetName();  
+    int GetAge();
+    string GetStreetName();
     virtual void GetInfo();
 };
 
