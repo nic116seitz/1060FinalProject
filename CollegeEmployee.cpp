@@ -9,6 +9,7 @@ void CollegeEmployee::SetSSN(string inSSN) {
 void CollegeEmployee::SetAnnualComp(int inComp) {
   annualComp = inComp;
 }
+
 void CollegeEmployee::SetDepartmentNames(vector<string> inDeptNames) {
- deptNames =  
+ deptNames = inDeptNames;  
 } 
