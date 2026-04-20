@@ -9,12 +9,12 @@ class CollegeEmployee : public Person {
   public:
     void SetSSN(string inSSN);
     void SetAnnualComp(int inComp);
-    void SetDepartmentNames(vector<string> inDeptNames);
+    void SetDeptName(string inDeptName);
     void Job(string inJob);
   protected:
     string ssn;
     int annualComp;
-    vector<string> deptNames;
+    string deptName;
     string job;
 };
 #endif // !COLLEGE_EMPLOYEE_H

@@ -17,30 +17,37 @@ int main () {
   cout << "Enter first name: ";
   cin >> fName;
   cout << endl; 
+  employee.SetFirst(fName);
 
   cout << "Enter last name: ";
   cin >> lName;
   cout << endl;
+  employee.SetLast(lName);
 
   cout << "Enter age: ";
   cin >> age;
   cout << endl;
+  employee.SetAge(age);
 
   cout << "Enter address: ";
   cin >> address;
   cout << endl;
+  employee.SetAddress(address);
 
   cout << "Enter Social Security Number (SSN): ";
   cin >> ssn;
   cout << endl;
+  employee.SetSSN(ssn);
  
   cout << "Enter Annual Comp: ";
   cin >> anComp;
   cout << endl;
+  employee.SetAnnualComp(anComp);
 
   cout << "Enter Department Name: ";
   cin >> deptName;
   cout << endl;
+  employee.SetDepartmentNames(string deptName);
 
   cout << "Enter Job: ";
   cin >> job;

@@ -10,6 +10,6 @@ void CollegeEmployee::SetAnnualComp(int inComp) {
   annualComp = inComp;
 }
 
-void CollegeEmployee::SetDepartmentNames(vector<string> inDeptNames) {
- deptNames = inDeptNames;  
+void CollegeEmployee::SetDeptName(string inDeptName) {
+ deptName = inDeptName;  
 } 
