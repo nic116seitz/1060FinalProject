@@ -6,7 +6,11 @@ class Student : public Person {
   private:
     string major;
     string fieldStudy;
-    double GPA;
+    double gpa;
+  public:
+    void SetMajor(string inMajor);
+    void SetField(string inField);
+    void SetGPA(double inGPA);
 };
 
 #endif // !
