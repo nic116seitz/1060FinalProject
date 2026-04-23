@@ -10,7 +10,12 @@ class CollegeEmployee : public Person {
     void SetSSN(string inSSN);
     void SetAnnualComp(int inComp);
     void SetDeptName(string inDeptName);
-    void Job(string inJob);
+    void SetJob(string inJob);
+    string GetSSN();
+    int GetAnnComp();
+    string GetDeptName();
+    string GetJob();
+    void GetInfo();
   protected:
     string ssn;
     int annualComp;

@@ -17,7 +17,7 @@ class Person {
     string GetName();  
     int GetAge();
     string GetStreetName();
-    virtual void GetInfo();
+    void GetInfo();
 };
 
 #endif // !PERSON_H

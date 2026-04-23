@@ -30,7 +30,8 @@ int main () {
   employee.SetAge(age);
 
   cout << "Enter address: ";
-  cin >> address;
+  cin.ignore();
+  getline(cin, address);
   cout << endl;
   employee.SetAddress(address);
 
@@ -45,14 +46,18 @@ int main () {
   employee.SetAnnualComp(anComp);
 
   cout << "Enter Department Name: ";
-  cin >> deptName;
+  cin.ignore();
+  getline(cin, deptName);
   cout << endl;
-  employee.SetDepartmentNames(string deptName);
+  employee.SetDeptName(deptName);
 
   cout << "Enter Job: ";
   cin >> job;
   cout << endl;
-
+  employee.SetJob(job);
+  
+  employee.GetInfo();
+  
 
   return 0;
 }
