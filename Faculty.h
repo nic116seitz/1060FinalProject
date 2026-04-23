@@ -7,6 +7,7 @@ class Faculty : public CollegeEmployee {
   public:
     void SetStatus(bool inTenured);
     bool GetStatus();
+    void GetInfo();
   private:
     bool isTenured;
 };
