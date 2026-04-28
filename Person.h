@@ -8,7 +8,7 @@ class Person {
     string firstName;
     string lastName;
     int age;
-    string streetName;
+    string address;
   public:
     void SetFirst(string inFirst);
     void SetLast(string inLast);
@@ -16,7 +16,7 @@ class Person {
     void SetAddress(string inAddress);
     string GetName();  
     int GetAge();
-    string GetStreetName();
+    string GetAddress();
     void GetInfo();
 };
 

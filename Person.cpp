@@ -16,7 +16,7 @@ void Person::SetAge(int inAge) {
 }
 
 void Person::SetAddress(string inAddress) {
-  streetName = inAddress;
+  address = inAddress;
 }
 
 string Person::GetName() {
@@ -27,15 +27,15 @@ int Person::GetAge() {
   return age;
 }
 
-string Person::GetStreetName() {
-  return streetName;
+string Person::GetAddress() {
+  return address;
 }
 
 void Person::GetInfo() {
   cout << "--------" << endl;
   cout << "Name: " << GetName() << endl;
   cout << "Age: " << GetAge() << endl;
-  cout << "Street Name: " << GetStreetName() << endl;
+  cout << "Street Name: " << GetAddress() << endl;
 }
 // Class testing to follow 
 // int main() {
