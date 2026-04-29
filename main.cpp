@@ -102,10 +102,34 @@ void CreatePerson(vector<Faculty> facultyRoster, vector<Student> studentRoster, 
 
 
 void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<CollegeEmployee> inEmployees) {
+  int i;
+  int vectorSize;
+  Faculty currentFaculty;
+  Student currentStudent;
+  CollegeEmployee currentEmployee;
+  
+  vectorSize = inFaculty.size();
+  for (i = 0; i < vectorSize; ++i) {
+    currentFaculty = inFaculty.at(i);
+    currentFaculty.GetInfo();
+  }
+
+  vectorSize = inStudent.size();
+
+  for (i = 0; i < vectorSize; ++i) {
+    currentStudent = inStudent.at(i);
+    currentStudent.GetInfo();
+  }
+  
+  vectorSize = inEmployees.size();
+
+  for (i = 0; i < vectorSize; ++i) {
+    currentEmployee = inEmployees.at(i);
+    currentEmployee.GetInfo();
+  }
 }
 
 void EditProfile(vector<Faculty> inFaculty, vector<Student> inStudent, vector<CollegeEmployee> inEmployees) {
-  string targSSN;
   string targName;
 }
 
