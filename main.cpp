@@ -61,6 +61,7 @@ void CreatePerson(vector<Faculty> facultyRoster, vector<Student> studentRoster, 
       newTeacher.SetSSN(ssn);
       newTeacher.SetAnnualComp(anComp);
       newTeacher.SetDeptName(deptName);
+      newTeacher.SetStatus(tenure);
       facultyRoster.push_back(newTeacher);
     }
     
