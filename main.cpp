@@ -25,6 +25,7 @@ void CreatePerson(vector<Faculty> facultyRoster, vector<Student> studentRoster, 
   string major;
   string fieldOfStudy;
   bool tenure;
+  double gpa;
   
   cout << "Enter first name: ";
   cin >> fName;
@@ -70,11 +71,14 @@ void CreatePerson(vector<Faculty> facultyRoster, vector<Student> studentRoster, 
       cin.ignore();
       getline(cin, major);
       cout << "Please enter the their field of study: ";
-      getline(cin, fieldOfStudy);
       cin.ignore();
+      getline(cin, fieldOfStudy);
+      cout << "Please enter the GPA for the student: ";
       newStudent.SetFirst(fName);
       newStudent.SetLast(lName);
       newStudent.SetAddress(address);
+      newStudent.SetMajor(major);
+      newStudent.SetField(fieldOfStudy);
       studentRoster.push_back(newStudent);
     }
 
