@@ -109,19 +109,32 @@ void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<Co
   CollegeEmployee currentEmployee;
   
   vectorSize = inFaculty.size();
-  for (i = 0; i < vectorSize; ++i) {
-    currentFaculty = inFaculty.at(i);
-    currentFaculty.GetInfo();
+  if (vectorSize == 0) {
+    cout << "There are no faculty";
   }
 
+  else {
+    for (i = 0; i < vectorSize; ++i) {
+      currentFaculty = inFaculty.at(i);
+      currentFaculty.GetInfo();
+    }
+  }
   vectorSize = inStudent.size();
-
-  for (i = 0; i < vectorSize; ++i) {
-    currentStudent = inStudent.at(i);
-    currentStudent.GetInfo();
+  if (vectorSize == 0) {
+    cout << "There are no students";
+  }
+  
+  else {
+    for (i = 0; i < vectorSize; ++i) {
+      currentStudent = inStudent.at(i);
+      currentStudent.GetInfo();
+    }
   }
   
   vectorSize = inEmployees.size();
+  if (vectorSize == 0) {
+    cout << "There are no non-faculty employees";
+  }
 
   for (i = 0; i < vectorSize; ++i) {
     currentEmployee = inEmployees.at(i);
@@ -167,8 +180,6 @@ void menu(vector<Faculty> currentFaculty, vector<Student> currentStudents, vecto
       }
     }
 }
-
-
 
 int main () {
   vector<Faculty> currentFaculty;
