@@ -9,7 +9,7 @@
 #import "Student.h"
 using namespace std;
 
-void CreatePerson(vector<Faculty> facultyRoster, vector<Student> studentRoster, vector<CollegeEmployee> collegeEmployees) {
+void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster, vector<CollegeEmployee>& collegeEmployees) {
   string fName;
   string lName;
   int age;
@@ -24,6 +24,7 @@ void CreatePerson(vector<Faculty> facultyRoster, vector<Student> studentRoster, 
   string job;
   string major;
   string fieldOfStudy;
+  string tenureInput;
   bool tenure;
   double gpa;
   
@@ -54,8 +55,17 @@ void CreatePerson(vector<Faculty> facultyRoster, vector<Student> studentRoster, 
       cout << "Enter Department Name: ";
       cin.ignore();
       getline(cin, deptName);
-      cout << "Are they tenured (enter true or false): ";
-      cin >> tenure;
+      cout << "Are they tenured (enter yes or no): ";
+      cin >> tenureInput;
+
+      if (tenureInput == "yes" || tenureInput == "Yes" || tenureInput == "YES") {
+        tenure = true;
+      }
+
+      else {
+        tenure = false;
+      }
+
       newTeacher.SetFirst(fName);
       newTeacher.SetLast(lName);
       newTeacher.SetAddress(address);
@@ -74,11 +84,13 @@ void CreatePerson(vector<Faculty> facultyRoster, vector<Student> studentRoster, 
       cin.ignore();
       getline(cin, fieldOfStudy);
       cout << "Please enter the GPA for the student: ";
+      cin >> gpa;
       newStudent.SetFirst(fName);
       newStudent.SetLast(lName);
       newStudent.SetAddress(address);
       newStudent.SetMajor(major);
       newStudent.SetField(fieldOfStudy);
+      newStudent.SetGPA(gpa);
       studentRoster.push_back(newStudent);
     }
 
@@ -147,23 +159,46 @@ void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<Co
   }
 }
 
-void EditProfile(vector<Faculty> inFaculty, vector<Student> inStudent, vector<CollegeEmployee> inEmployees) {
+void EditProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<CollegeEmployee>& inEmployees) {
   string targName;
+  string targSsn;
+  int i;
+  int rosterSize;
+  
+  rosterSize = inFaculty.size();
+  for (i = 0; i < rosterSize; ++i) {
+    //SearchFunction
+  }
+
+
+  rosterSize = inStudent.size();
+  for (i = 0; i < rosterSize; ++i) {
+    //SearchFunction
+  }
+
+  rosterSize = inEmployees.size();
+  for (i = 0; i < rosterSize; ++i) {
+    //SearchFunction
+  }
+
 }
 
+// !! DEBUG !! Something here is causing infinite looping
 void menu(vector<Faculty> currentFaculty, vector<Student> currentStudents, vector<CollegeEmployee> currentEmployees) {
     string query;
     int userChoice;
 
-    cout << "From the following menu please enter the number corresponding to your selection: " << endl;
-    cout << "1. Add new Person" << endl;
-    cout << "2. List all current profiles" << endl;
-    cout << "3. Edit existing profile" << endl;
-    cout << "4. Exit" << endl;
-    cin >> userChoice;
+    userChoice = 0;
 
     while (userChoice != 4) {
       try {
+        cout << "From the following menu please enter the number corresponding to your selection: " << endl;
+        cout << "1. Add new Person" << endl;
+        cout << "2. List all current profiles" << endl;
+        cout << "3. Edit existing profile" << endl;
+        cout << "4. Exit" << endl;
+        cin >> userChoice;
+
         if (userChoice == 1) {
           CreatePerson(currentFaculty, currentStudents, currentEmployees);
         }
@@ -179,6 +214,7 @@ void menu(vector<Faculty> currentFaculty, vector<Student> currentStudents, vecto
         else if (userChoice == 4) {
           exit(0);
         }
+
       }
       catch (invalid_argument) {
         cout << "Invalid Entry: Please try again!" << endl;
