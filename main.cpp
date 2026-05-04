@@ -74,6 +74,15 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
       newTeacher.SetDeptName(deptName);
       newTeacher.SetStatus(tenure);
       facultyRoster.push_back(newTeacher);
+
+      cout << "*****New Faculty*****" << endl;
+      cout << "Name: " << fName + " " + lName << endl;
+      cout << "Address: " << address << endl;
+      cout << "SSN: " << ssn << endl;
+      cout << "Salary: " << anComp << endl;
+      cout << "Department: " << deptName << endl;
+      cout << "Tenured: " << tenure << endl;
+      cout << endl;
     }
     
     else if (choicePerson == 2) {
@@ -92,6 +101,14 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
       newStudent.SetField(fieldOfStudy);
       newStudent.SetGPA(gpa);
       studentRoster.push_back(newStudent);
+
+      cout << "*****New Student*****" << endl;
+      cout << "Name: " << fName + " " + lName << endl;
+      cout << "Address: " << address << endl;
+      cout << "Major: " << major << endl;
+      cout << "Field of Study: " << fieldOfStudy << endl;
+      cout << "GPA: " << gpa << endl;
+      cout << endl;
     }
 
     else if (choicePerson == 3) {
@@ -102,6 +119,12 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
       newEmployee.SetAddress(address);
       newEmployee.SetJob(job);
       collegeEmployees.push_back(newEmployee);
+
+      cout << "*****New Employee(Non-faculty)*****" << endl;
+      cout << "Name: " << fName + " " + lName << endl;
+      cout << "Address: " << address << endl;
+      cout << "Job: " << job << endl;
+      cout << endl;
     }
 
     else if (choicePerson == 4) {
@@ -127,7 +150,7 @@ void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<Co
   
   vectorSize = inFaculty.size();
   if (vectorSize == 0) {
-    cout << "There are no faculty";
+    cout << "Error: There are no faculty" << endl;
   }
 
   else {
@@ -138,7 +161,7 @@ void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<Co
   }
   vectorSize = inStudent.size();
   if (vectorSize == 0) {
-    cout << "There are no students";
+    cout << "Error: There are no students" << endl;
   }
   
   else {
@@ -150,7 +173,7 @@ void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<Co
   
   vectorSize = inEmployees.size();
   if (vectorSize == 0) {
-    cout << "There are no non-faculty employees";
+    cout << "Error: There are no non-faculty employees" << endl;
   }
 
   for (i = 0; i < vectorSize; ++i) {
@@ -183,20 +206,24 @@ void EditProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<
 
 }
 
-// !! DEBUG !! Something here is causing infinite looping
-void menu(vector<Faculty> currentFaculty, vector<Student> currentStudents, vector<CollegeEmployee> currentEmployees) {
+void DeleteProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<CollegeEmployee>& inEmployees) {
+
+}
+
+void menu(vector<Faculty>& currentFaculty, vector<Student>& currentStudents, vector<CollegeEmployee>& currentEmployees) {
     string query;
     int userChoice;
 
     userChoice = 0;
 
-    while (userChoice != 4) {
+    while (userChoice != 5) {
       try {
         cout << "From the following menu please enter the number corresponding to your selection: " << endl;
         cout << "1. Add new Person" << endl;
         cout << "2. List all current profiles" << endl;
         cout << "3. Edit existing profile" << endl;
-        cout << "4. Exit" << endl;
+        cout << "4. Delete Profile" << endl;
+        cout << "5. Exit" << endl;
         cin >> userChoice;
 
         if (userChoice == 1) {
@@ -212,7 +239,7 @@ void menu(vector<Faculty> currentFaculty, vector<Student> currentStudents, vecto
         }
 
         else if (userChoice == 4) {
-          exit(0);
+          PrintRoster(currentFaculty, currentStudents, currentEmployees);
         }
 
       }
