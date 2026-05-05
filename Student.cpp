@@ -28,5 +28,8 @@ double Student::GetGPA() {
 
 void Student::GetInfo() {
   Person::GetInfo();
+  cout << "Field of Study: " << GetField() << endl;
+  cout << "Major: " << GetMajor() << endl;
+  cout << "GPA: " << GetGPA() << endl;
 
 }
