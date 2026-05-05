@@ -15,6 +15,7 @@ void Faculty::GetInfo() {
   if (isTenured) {
     cout << "Tenure Status: Tenured.\n" << endl;
   }
+
   else {
     cout << "Tenure Status: Not Tenured.\n" << endl;
   }

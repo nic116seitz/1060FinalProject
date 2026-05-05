@@ -35,9 +35,21 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
   cout << "3. Other" << endl;
   cout << "4. Exit" << endl;
   cin >> choicePerson;
+
   if (choicePerson == 4) {
     return;
   }
+
+  else if (choicePerson == 1 && facultyRoster.size() == 3) {
+    cout << "Error: Faculty capcity reached, please delete entries before adding ";
+    cout << "additional faculty entries" << endl;
+  }
+
+  else if (choicePerson == 2 && studentRoster.size() == 7) {
+    cout << "Error: Student capcity reached, please delete entries before adding ";
+    cout << "additional faculty entries" << endl;
+  }
+
   else {
     cout << "Enter first name: ";
     cin >> fName;
@@ -129,10 +141,9 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
         collegeEmployees.push_back(newEmployee);
 
         cout << "*****New Employee(Non-faculty)*****" << endl;
-        cout << "Name: " << fName + " " + lName << endl;
-        cout << "Address: " << address << endl;
-        cout << "Job: " << job << endl;
+        newEmployee.GetInfo();
         cout << endl;
+        cout << "Job: " << newEmployee.GetJob() << endl;
       }
 
       else {
