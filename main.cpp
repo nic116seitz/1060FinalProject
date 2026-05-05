@@ -27,17 +27,7 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
   string tenureInput;
   bool tenure;
   double gpa;
-  
-  cout << "Enter first name: ";
-  cin >> fName;
-  cout << "Enter last name: ";
-  cin >> lName;
-  cout << "Enter age: ";
-  cin >> age;
-  cout << "Enter address: ";
-  cin.ignore();
-  getline(cin, address);
-
+   
   cout << "Please enter the number corresponding to the category for this person: ";
   cout << endl;
   cout << "1. Faculty" << endl;
@@ -45,101 +35,112 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
   cout << "3. Other" << endl;
   cout << "4. Exit" << endl;
   cin >> choicePerson;
+  if (choicePerson == 4) {
+    return;
+  }
+  else {
+    cout << "Enter first name: ";
+    cin >> fName;
+    cout << "Enter last name: ";
+    cin >> lName;
+    cout << "Enter age: ";
+    cin >> age;
+    cout << "Enter address: ";
+    cin.ignore();
+    getline(cin, address);
+    
+    try {
+      if (choicePerson == 1) {
+        cout << "Enter Social Security Number (SSN): ";
+        cin >> ssn;
+        cout << "Enter Annual Comp: ";
+        cin >> anComp;
+        cout << "Enter Department Name: ";
+        cin.ignore();
+        getline(cin, deptName);
+        cout << "Are they tenured (enter yes or no): ";
+        cin >> tenureInput;
 
-  try {
-    if (choicePerson == 1) {
-      cout << "Enter Social Security Number (SSN): ";
-      cin >> ssn;
-      cout << "Enter Annual Comp: ";
-      cin >> anComp;
-      cout << "Enter Department Name: ";
-      cin.ignore();
-      getline(cin, deptName);
-      cout << "Are they tenured (enter yes or no): ";
-      cin >> tenureInput;
+        if (tenureInput == "yes" || tenureInput == "Yes" || tenureInput == "YES") {
+          tenure = true;
+        }
 
-      if (tenureInput == "yes" || tenureInput == "Yes" || tenureInput == "YES") {
-        tenure = true;
+        else {
+          tenure = false;
+        }
+
+        newTeacher.SetFirst(fName);
+        newTeacher.SetLast(lName);
+        newTeacher.SetAge(age);
+        newTeacher.SetAddress(address);
+        newTeacher.SetSSN(ssn);
+        newTeacher.SetAnnualComp(anComp);
+        newTeacher.SetDeptName(deptName);
+        newTeacher.SetStatus(tenure);
+        facultyRoster.push_back(newTeacher);
+
+        cout << "*****New Faculty*****" << endl;
+        cout << "Name: " << fName + " " + lName << endl;
+        cout << "Address: " << address << endl;
+        cout << "SSN: " << ssn << endl;
+        cout << "Salary: " << anComp << endl;
+        cout << "Department: " << deptName << endl;
+        cout << "Tenured: " << tenureInput << endl;
+        cout << endl;
+      }
+      
+      else if (choicePerson == 2) {
+        cout << "Please enter the major of the student: ";
+        cin.ignore();
+        getline(cin, major);
+        cout << "Please enter the their field of study: ";
+        cin.ignore();
+        getline(cin, fieldOfStudy);
+        cout << "Please enter the GPA for the student: ";
+        cin >> gpa;
+        newStudent.SetFirst(fName);
+        newStudent.SetLast(lName);
+        newStudent.SetAddress(address);
+        newStudent.SetMajor(major);
+        newStudent.SetField(fieldOfStudy);
+        newStudent.SetGPA(gpa);
+        studentRoster.push_back(newStudent);
+
+        cout << "*****New Student*****" << endl;
+        cout << "Name: " << fName + " " + lName << endl;
+        cout << "Address: " << address << endl;
+        cout << "Major: " << major << endl;
+        cout << "Field of Study: " << fieldOfStudy << endl;
+        cout << "GPA: " << gpa << endl;
+        cout << endl;
+      }
+
+      else if (choicePerson == 3) {
+        cout << "Enter Job: ";
+        cin >> job;
+        newEmployee.SetFirst(fName);
+        newEmployee.SetLast(lName);
+        newEmployee.SetAddress(address);
+        newEmployee.SetJob(job);
+        collegeEmployees.push_back(newEmployee);
+
+        cout << "*****New Employee(Non-faculty)*****" << endl;
+        cout << "Name: " << fName + " " + lName << endl;
+        cout << "Address: " << address << endl;
+        cout << "Job: " << job << endl;
+        cout << endl;
       }
 
       else {
-        tenure = false;
+        cout << "Invalid input: please try again" << endl;
       }
-
-      newTeacher.SetFirst(fName);
-      newTeacher.SetLast(lName);
-      newTeacher.SetAddress(address);
-      newTeacher.SetSSN(ssn);
-      newTeacher.SetAnnualComp(anComp);
-      newTeacher.SetDeptName(deptName);
-      newTeacher.SetStatus(tenure);
-      facultyRoster.push_back(newTeacher);
-
-      cout << "*****New Faculty*****" << endl;
-      cout << "Name: " << fName + " " + lName << endl;
-      cout << "Address: " << address << endl;
-      cout << "SSN: " << ssn << endl;
-      cout << "Salary: " << anComp << endl;
-      cout << "Department: " << deptName << endl;
-      cout << "Tenured: " << tenure << endl;
-      cout << endl;
-    }
-    
-    else if (choicePerson == 2) {
-      cout << "Please enter the major of the student: ";
-      cin.ignore();
-      getline(cin, major);
-      cout << "Please enter the their field of study: ";
-      cin.ignore();
-      getline(cin, fieldOfStudy);
-      cout << "Please enter the GPA for the student: ";
-      cin >> gpa;
-      newStudent.SetFirst(fName);
-      newStudent.SetLast(lName);
-      newStudent.SetAddress(address);
-      newStudent.SetMajor(major);
-      newStudent.SetField(fieldOfStudy);
-      newStudent.SetGPA(gpa);
-      studentRoster.push_back(newStudent);
-
-      cout << "*****New Student*****" << endl;
-      cout << "Name: " << fName + " " + lName << endl;
-      cout << "Address: " << address << endl;
-      cout << "Major: " << major << endl;
-      cout << "Field of Study: " << fieldOfStudy << endl;
-      cout << "GPA: " << gpa << endl;
-      cout << endl;
     }
 
-    else if (choicePerson == 3) {
-      cout << "Enter Job: ";
-      cin >> job;
-      newEmployee.SetFirst(fName);
-      newEmployee.SetLast(lName);
-      newEmployee.SetAddress(address);
-      newEmployee.SetJob(job);
-      collegeEmployees.push_back(newEmployee);
-
-      cout << "*****New Employee(Non-faculty)*****" << endl;
-      cout << "Name: " << fName + " " + lName << endl;
-      cout << "Address: " << address << endl;
-      cout << "Job: " << job << endl;
-      cout << endl;
+    catch (invalid_argument) {
+      cout << "Invalid Input: your entry is not a number";
     }
-
-    else if (choicePerson == 4) {
-    }
-
-    else {
-      cout << "Invalid input: please try again" << endl;
-    }
-  }
-
-  catch (invalid_argument) {
-    cout << "Invalid Input: your entry is not a number";
   }
 }
-
 
 void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<CollegeEmployee> inEmployees) {
   int i;
@@ -193,7 +194,6 @@ void EditProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<
     //SearchFunction
   }
 
-
   rosterSize = inStudent.size();
   for (i = 0; i < rosterSize; ++i) {
     //SearchFunction
@@ -227,7 +227,14 @@ void menu(vector<Faculty>& currentFaculty, vector<Student>& currentStudents, vec
         cin >> userChoice;
 
         if (userChoice == 1) {
-          CreatePerson(currentFaculty, currentStudents, currentEmployees);
+          if (currentFaculty.size() == 3 &&
+              currentEmployees.size() == 4 &&
+              currentStudents.size() == 7) {
+            cout << "All rosters are at capacity, please delete profiles in order to add more" << endl;
+          }
+          else {
+            CreatePerson(currentFaculty, currentStudents, currentEmployees);
+          }
         }
         
         else if (userChoice == 2) {
@@ -241,6 +248,9 @@ void menu(vector<Faculty>& currentFaculty, vector<Student>& currentStudents, vec
         else if (userChoice == 4) {
           PrintRoster(currentFaculty, currentStudents, currentEmployees);
         }
+        else if (userChoice == 5) {
+          exit(0);
+        }
 
       }
       catch (invalid_argument) {
@@ -253,7 +263,10 @@ int main () {
   vector<Faculty> currentFaculty;
   vector<CollegeEmployee> currentEmployees;
   vector<Student> currentStudents;
+  
   menu(currentFaculty, currentStudents, currentEmployees);
+
+  
 
   return 0;
 }

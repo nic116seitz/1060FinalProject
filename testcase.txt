@@ -1,0 +1,28 @@
+Teacher Test Cases
+
+Bill
+James
+34
+123 Broad st
+1
+123-45-6789
+History
+no
+
+Celine
+Smith
+22
+123 stockton st
+1
+234-56-7890
+Chemistry
+no
+
+Charles
+Samson
+56
+192 4th st
+1
+328-94-8742
+Literature
+yes
