@@ -9,6 +9,17 @@
 #import "Student.h"
 using namespace std;
 
+string FormatName(string inString) {
+  int i;
+  string newString;
+  int strLen = inString.size();
+  newString += toupper(inString[0]);
+  for (i = 1; i < strLen; ++i) {
+    newString += tolower(inString[i]);
+  }
+  return newString;
+}
+
 void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster, vector<CollegeEmployee>& collegeEmployees) {
   string fName;
   string lName;
@@ -58,8 +69,10 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
   else {
     cout << "Enter first name: ";
     cin >> fName;
+    fName = FormatName(fName);
     cout << "Enter last name: ";
     cin >> lName;
+    lName = FormatName(lName);
     cout << "Enter age: ";
     cin >> age;
     cout << "Enter address: ";
@@ -127,11 +140,7 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
         studentRoster.push_back(newStudent);
 
         cout << "*****New Student*****" << endl;
-        cout << "Name: " << fName + " " + lName << endl;
-        cout << "Address: " << address << endl;
-        cout << "Major: " << major << endl;
-        cout << "Field of Study: " << fieldOfStudy << endl;
-        cout << "GPA: " << gpa << endl;
+        newStudent.GetInfo();
         cout << endl;
       }
 
@@ -180,6 +189,7 @@ void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<Co
       currentFaculty.GetInfo();
     }
   }
+
   vectorSize = inStudent.size();
   if (vectorSize == 0) {
     cout << "Error: There are no students" << endl;
