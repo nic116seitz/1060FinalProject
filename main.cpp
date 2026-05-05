@@ -46,8 +46,13 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
   }
 
   else if (choicePerson == 2 && studentRoster.size() == 7) {
-    cout << "Error: Student capcity reached, please delete entries before adding ";
-    cout << "additional faculty entries" << endl;
+    cout << "Error: Student roster capcity reached, please delete entries before adding ";
+    cout << "additional student entries" << endl;
+  }
+
+  else if (choicePerson == 2 && collegeEmployees.size() == 4) {
+    cout << "Error: Employee roster capcity reached, please delete entries before adding ";
+    cout << "additional employee entries" << endl;
   }
 
   else {
