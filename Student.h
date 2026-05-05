@@ -11,6 +11,10 @@ class Student : public Person {
     void SetMajor(string inMajor);
     void SetField(string inField);
     void SetGPA(double inGPA);
+    string GetMajor();
+    string GetField();
+    double GetGPA();
+    void GetInfo();
 };
 
 #endif // !

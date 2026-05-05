@@ -13,9 +13,9 @@ bool Faculty::GetStatus() {
 void Faculty::GetInfo() {
   CollegeEmployee::GetInfo();
   if (isTenured) {
-    cout << "Tenure Status: Tenured." << endl;
+    cout << "Tenure Status: Tenured.\n" << endl;
   }
   else {
-    cout << "Tenure Status: Not Tenured." << endl;
+    cout << "Tenure Status: Not Tenured.\n" << endl;
   }
 }

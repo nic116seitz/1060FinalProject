@@ -40,4 +40,5 @@ void CollegeEmployee::GetInfo() {
   cout << "Social Security Number: " << GetSSN() << endl; 
   cout << "Annual Salary: " << GetAnnComp() << endl;
   cout << "Department: " << GetDeptName() << endl;
+  cout << endl;
 }

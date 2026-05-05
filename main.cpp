@@ -78,15 +78,17 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
         newTeacher.SetDeptName(deptName);
         newTeacher.SetStatus(tenure);
         facultyRoster.push_back(newTeacher);
+        cout << endl;
 
         cout << "*****New Faculty*****" << endl;
-        cout << "Name: " << fName + " " + lName << endl;
-        cout << "Address: " << address << endl;
-        cout << "SSN: " << ssn << endl;
-        cout << "Salary: " << anComp << endl;
-        cout << "Department: " << deptName << endl;
-        cout << "Tenured: " << tenureInput << endl;
-        cout << endl;
+        newTeacher.GetInfo();
+        // cout << "Name: " << newTeacher.get << endl;
+        // cout << "Address: " << address << endl;
+        // cout << "SSN: " << ssn << endl;
+        // cout << "Salary: " << anComp << endl;
+        // cout << "Department: " << deptName << endl;
+        // cout << "Tenured: " << tenureInput << endl;
+        // cout << endl;
       }
       
       else if (choicePerson == 2) {
@@ -100,6 +102,7 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
         cin >> gpa;
         newStudent.SetFirst(fName);
         newStudent.SetLast(lName);
+        newStudent.SetAge(age);
         newStudent.SetAddress(address);
         newStudent.SetMajor(major);
         newStudent.SetField(fieldOfStudy);
@@ -120,6 +123,7 @@ void CreatePerson(vector<Faculty>& facultyRoster, vector<Student>& studentRoster
         cin >> job;
         newEmployee.SetFirst(fName);
         newEmployee.SetLast(lName);
+        newEmployee.SetAge(age);
         newEmployee.SetAddress(address);
         newEmployee.SetJob(job);
         collegeEmployees.push_back(newEmployee);
