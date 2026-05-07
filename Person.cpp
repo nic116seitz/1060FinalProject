@@ -19,6 +19,14 @@ void Person::SetAddress(string inAddress) {
   address = inAddress;
 }
 
+string Person::GetFirst() {
+  return firstName;
+}
+
+string Person::GetLast() {
+  return lastName;
+}
+
 string Person::GetName() {
   return firstName + " " + lastName;
 }

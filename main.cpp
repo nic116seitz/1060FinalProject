@@ -177,6 +177,7 @@ void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<Co
   Faculty currentFaculty;
   Student currentStudent;
   CollegeEmployee currentEmployee;
+  int rosterCount;
   
   vectorSize = inFaculty.size();
   if (vectorSize == 0) {
@@ -186,6 +187,7 @@ void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<Co
   else {
     for (i = 0; i < vectorSize; ++i) {
       currentFaculty = inFaculty.at(i);
+      cout << i + 1 << ".";
       currentFaculty.GetInfo();
     }
   }
@@ -198,6 +200,7 @@ void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<Co
   else {
     for (i = 0; i < vectorSize; ++i) {
       currentStudent = inStudent.at(i);
+      cout << i + 1 << ".";
       currentStudent.GetInfo();
     }
   }
@@ -209,31 +212,214 @@ void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<Co
 
   for (i = 0; i < vectorSize; ++i) {
     currentEmployee = inEmployees.at(i);
+    cout << i + 1 << ".";
     currentEmployee.GetInfo();
   }
 }
 
-void EditProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<CollegeEmployee>& inEmployees) {
+void EditProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<CollegeEmployee>& inEmployees, int profileType) {
   string targName;
-  string targSsn;
   int i;
   int rosterSize;
+  int targField;
+  int targNum;
+  string newName;
+  string confirm;
+
+  try {
+    cout << "Enter the first or last name of the person's profile you would like to edit: ";
+    cin >> targName;
+    targName = FormatName(targName);
+
+    if (profileType == 1) {
+      rosterSize = inFaculty.size();
+      for (i = 0; i < rosterSize; ++i) {
+        if ((inFaculty.at(i)).GetFirst() == targName || (inFaculty.at(i)).GetLast() == targName){
+          cout << i + 1 << ".";
+          (inFaculty.at(i)).GetInfo();
+        } 
+      }
+    }
+
+    else if (profileType == 2) {
+      rosterSize = inStudent.size();
+      for (i = 0; i < rosterSize; ++i) {
+        if ((inStudent.at(i)).GetFirst() == targName || (inStudent.at(i)).GetLast() == targName){
+          cout << i + 1 << ".";
+          (inStudent.at(i)).GetInfo();
+        } 
+      }
+    }
+
+    else if (profileType == 3) {
+      rosterSize = inEmployees.size();
+      for (i = 0; i < rosterSize; ++i) {
+        if ((inEmployees.at(i)).GetFirst() == targName || (inEmployees.at(i)).GetLast() == targName){
+          cout << i + 1 << ".";
+          (inEmployees.at(i)).GetInfo();
+        } 
+      }
+    }
+
+    else {
+      cout << "Number not in Range please try again";
+    }
+  }
+
+  catch (invalid_argument) {
+    cout << "Invalid input please try again" << endl;
+  }
+
+  // End of EditClass possible module
+
+  // Beginning EditField possible module
+  cout << "Enter the number corresponding to the profile you would like to edit: ";
+  cin >> targNum;
+  targNum -= 1;
+
+  cout << endl;
+  cout << "What field would you like to edit";
+  cout << "1. First Name" << endl;
+  cout << "2. Last Name" << endl;
+  cout << "3. Age" << endl;
+  cout << "4. Address" << endl;
+  cin  >> targField;
+
+  if (profileType == 1 && targField == 1) {
+    cout << "Enter new first name: ";
+    cin >> newName;
+    cout << "Please confirm " << "*" << newName << "*" << " (enter Yes or No)";
+    cin >> confirm;
+    confirm = FormatName(confirm);
+    if (confirm == "Yes") {
+      (inFaculty.at(targNum)).SetFirst(newName);
+    }
+    else {
+      return;
+    }
+  }
+
+  else if (profileType == 2 && targField == 1) {
+    cout << "Enter new first name: ";
+    cin >> newName;
+    cout << "Please confirm " << "*" << newName << "*" << " (enter Yes or No)";
+    cin >> confirm;
+    confirm = FormatName(confirm);
+    if (confirm == "Yes") {
+      (inStudent.at(targNum)).SetFirst(newName);
+    }
+    else {
+      return;
+    }
+  }
+
+  else if (profileType == 3 && targField == 1) {
+    cout << "Enter new first name: ";
+    cin >> newName;
+    cout << "Please confirm " << "*" << newName << "*" << " (enter Yes or No)";
+    cin >> confirm;
+    confirm = FormatName(confirm);
+    if (confirm == "Yes") {
+      (inEmployees.at(targNum)).SetFirst(newName);
+    }
+    else {
+      return;
+    }
+  }
+
+  else if (profileType == 1 && targField == 2) {
+    cout << "Enter new last name: ";
+    cin >> newName;
+    cout << "Please confirm " << "*" << newName << "*" << " (enter Yes or No)";
+    cin >> confirm;
+    confirm = FormatName(confirm);
+    if (confirm == "Yes") {
+      (inFaculty.at(targNum)).SetLast(newName);
+    }
+    else {
+      return;
+    }
+  }
+
+  else if (profileType == 1 && targField == 2) {
+    cout << "Enter new last name: ";
+    cin >> newName;
+    cout << "Please confirm " << "*" << newName << "*" << " (enter Yes or No)";
+    cin >> confirm;
+    confirm = FormatName(confirm);
+    if (confirm == "Yes") {
+      (inFaculty.at(targNum)).SetLast(newName);
+    }
+    else {
+      return;
+    }
+  }
   
-  rosterSize = inFaculty.size();
-  for (i = 0; i < rosterSize; ++i) {
-    //SearchFunction
+}
+
+int EditClass() {
+  int profileType;
+
+  try {
+    cout << "Enter the number corresponding to the profile type you would like to edit: ";
+    cout << "1. Faculty" << endl;
+    cout << "2. Student" << endl;
+    cout << "3. Non Faculty Employee" << endl;
+    cout << "4. Cancel" << endl;
+    cin >> profileType;
+  }
+    
+  catch (invalid_argument) {
+    cout << "Invalid input please try again" << endl;
   }
 
-  rosterSize = inStudent.size();
-  for (i = 0; i < rosterSize; ++i) {
-    //SearchFunction
+  return profileType;
+}
+
+int Search(string name, int profileType, vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<CollegeEmployee>& inEmployees) {
+  int index;
+  string targName;
+  int rosterSize;
+  int i;
+  
+  cout << "Enter the first or last name of the person's profile you would like to edit: ";
+  cin >> targName;
+  targName = FormatName(targName);
+
+  if (profileType == 1) {
+    rosterSize = inFaculty.size();
+    for (i = 0; i < rosterSize; ++i) {
+      if ((inFaculty.at(i)).GetFirst() == targName || (inFaculty.at(i)).GetLast() == targName){
+        cout << i + 1 << ".";
+        (inFaculty.at(i)).GetInfo();
+      } 
+    }
   }
 
-  rosterSize = inEmployees.size();
-  for (i = 0; i < rosterSize; ++i) {
-    //SearchFunction
+  else if (profileType == 2) {
+    rosterSize = inStudent.size();
+    for (i = 0; i < rosterSize; ++i) {
+      if ((inStudent.at(i)).GetFirst() == targName || (inStudent.at(i)).GetLast() == targName){
+        cout << i + 1 << ".";
+        (inStudent.at(i)).GetInfo();
+      } 
+    }
   }
 
+  else if (profileType == 3) {
+    rosterSize = inEmployees.size();
+    for (i = 0; i < rosterSize; ++i) {
+      if ((inEmployees.at(i)).GetFirst() == targName || (inEmployees.at(i)).GetLast() == targName){
+        cout << i + 1 << ".";
+        (inEmployees.at(i)).GetInfo();
+      } 
+    }
+  }
+
+  else {
+    cout << "Number not in Range please try again";
+    }
+  return index;
 }
 
 void DeleteProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<CollegeEmployee>& inEmployees) {

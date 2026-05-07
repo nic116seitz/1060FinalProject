@@ -15,6 +15,8 @@ class Person {
     void SetAge(int inAge);
     void SetAddress(string inAddress);
     string GetName();  
+    string GetFirst();
+    string GetLast();
     int GetAge();
     string GetAddress();
     void GetInfo();
