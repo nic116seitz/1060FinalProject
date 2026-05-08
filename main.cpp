@@ -217,75 +217,15 @@ void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<Co
   }
 }
 
-void EditProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<CollegeEmployee>& inEmployees, int profileType) {
+void EditProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<CollegeEmployee>& inEmployees, int profileType, int fieldNum) {
   string targName;
   int i;
   int rosterSize;
-  int targField;
   int targNum;
   string newName;
   string confirm;
 
-  try {
-    cout << "Enter the first or last name of the person's profile you would like to edit: ";
-    cin >> targName;
-    targName = FormatName(targName);
-
-    if (profileType == 1) {
-      rosterSize = inFaculty.size();
-      for (i = 0; i < rosterSize; ++i) {
-        if ((inFaculty.at(i)).GetFirst() == targName || (inFaculty.at(i)).GetLast() == targName){
-          cout << i + 1 << ".";
-          (inFaculty.at(i)).GetInfo();
-        } 
-      }
-    }
-
-    else if (profileType == 2) {
-      rosterSize = inStudent.size();
-      for (i = 0; i < rosterSize; ++i) {
-        if ((inStudent.at(i)).GetFirst() == targName || (inStudent.at(i)).GetLast() == targName){
-          cout << i + 1 << ".";
-          (inStudent.at(i)).GetInfo();
-        } 
-      }
-    }
-
-    else if (profileType == 3) {
-      rosterSize = inEmployees.size();
-      for (i = 0; i < rosterSize; ++i) {
-        if ((inEmployees.at(i)).GetFirst() == targName || (inEmployees.at(i)).GetLast() == targName){
-          cout << i + 1 << ".";
-          (inEmployees.at(i)).GetInfo();
-        } 
-      }
-    }
-
-    else {
-      cout << "Number not in Range please try again";
-    }
-  }
-
-  catch (invalid_argument) {
-    cout << "Invalid input please try again" << endl;
-  }
-
-  // End of EditClass possible module
-
-  // Beginning EditField possible module
-  cout << "Enter the number corresponding to the profile you would like to edit: ";
-  cin >> targNum;
-  targNum -= 1;
-
-  cout << endl;
-  cout << "What field would you like to edit";
-  cout << "1. First Name" << endl;
-  cout << "2. Last Name" << endl;
-  cout << "3. Age" << endl;
-  cout << "4. Address" << endl;
-  cin  >> targField;
-
-  if (profileType == 1 && targField == 1) {
+  if (profileType == 1 && fieldNum == 1) {
     cout << "Enter new first name: ";
     cin >> newName;
     cout << "Please confirm " << "*" << newName << "*" << " (enter Yes or No)";
@@ -299,7 +239,7 @@ void EditProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<
     }
   }
 
-  else if (profileType == 2 && targField == 1) {
+  else if (profileType == 2 && fieldNum == 1) {
     cout << "Enter new first name: ";
     cin >> newName;
     cout << "Please confirm " << "*" << newName << "*" << " (enter Yes or No)";
@@ -313,7 +253,7 @@ void EditProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<
     }
   }
 
-  else if (profileType == 3 && targField == 1) {
+  else if (profileType == 3 && fieldNum == 1) {
     cout << "Enter new first name: ";
     cin >> newName;
     cout << "Please confirm " << "*" << newName << "*" << " (enter Yes or No)";
@@ -327,7 +267,7 @@ void EditProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<
     }
   }
 
-  else if (profileType == 1 && targField == 2) {
+  else if (profileType == 1 && fieldNum == 2) {
     cout << "Enter new last name: ";
     cin >> newName;
     cout << "Please confirm " << "*" << newName << "*" << " (enter Yes or No)";
@@ -341,7 +281,7 @@ void EditProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<
     }
   }
 
-  else if (profileType == 1 && targField == 2) {
+  else if (profileType == 1 && fieldNum == 2) {
     cout << "Enter new last name: ";
     cin >> newName;
     cout << "Please confirm " << "*" << newName << "*" << " (enter Yes or No)";
@@ -373,14 +313,20 @@ int EditClass() {
     cout << "Invalid input please try again" << endl;
   }
 
+  catch (range_error) {
+    cout << "Number out of range please try again" << endl;
+  }
+
   return profileType;
 }
 
-int Search(string name, int profileType, vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<CollegeEmployee>& inEmployees) {
+void SearchEdit(int profileType, vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<CollegeEmployee>& inEmployees) {
   int index;
   string targName;
   int rosterSize;
+  int matchCount = 0;
   int i;
+  vector<int> matchIndex;
   
   cout << "Enter the first or last name of the person's profile you would like to edit: ";
   cin >> targName;
@@ -391,8 +337,13 @@ int Search(string name, int profileType, vector<Faculty>& inFaculty, vector<Stud
     for (i = 0; i < rosterSize; ++i) {
       if ((inFaculty.at(i)).GetFirst() == targName || (inFaculty.at(i)).GetLast() == targName){
         cout << i + 1 << ".";
+        matchIndex.push_back(i);
         (inFaculty.at(i)).GetInfo();
+        matchCount += 1;
       } 
+    }
+    if (matchCount == 0) {
+      cout << "No match found" << endl;
     }
   }
 
@@ -401,7 +352,22 @@ int Search(string name, int profileType, vector<Faculty>& inFaculty, vector<Stud
     for (i = 0; i < rosterSize; ++i) {
       if ((inStudent.at(i)).GetFirst() == targName || (inStudent.at(i)).GetLast() == targName){
         cout << i + 1 << ".";
+        matchIndex.push_back(i);
         (inStudent.at(i)).GetInfo();
+        matchCount += 1;
+      } 
+    }
+
+    if (matchCount == 0) {
+      cout << "No match found" << endl;
+    }
+
+    else if (matchCount > 1) {
+      cout << "Please select the profile you would like to edit: " << endl;
+      for (i = 0; i < matchCount; ++i) {
+        index = matchIndex.at(i);
+        cout << i + 1 << ". " << (inStudent.at(index)).GetInfo();
+        cin >> finalChoice;
       } 
     }
   }
@@ -412,16 +378,53 @@ int Search(string name, int profileType, vector<Faculty>& inFaculty, vector<Stud
       if ((inEmployees.at(i)).GetFirst() == targName || (inEmployees.at(i)).GetLast() == targName){
         cout << i + 1 << ".";
         (inEmployees.at(i)).GetInfo();
+        matchCount += 1;
       } 
     }
-  }
-
-  else {
-    cout << "Number not in Range please try again";
+    if (matchCount == 0) {
+      cout << "No match found" << endl;
     }
-  return index;
+  }
 }
 
+int EditField(int profileType) {
+  int profileIndex;
+  int fieldNum;
+  
+  cout << "Enter the number corresponding to the profile you would like to change" << endl;
+  cin >> profileIndex;
+  cout << "Enter the number corresponding to the field you would like to change" << endl;
+  cout << "1. First Name" << endl;
+  cout << "2. Last Name" << endl;
+  cout << "3. Age" << endl;
+  cout << "4. Address" << endl;
+  cin >> profileIndex;
+
+  if (profileType == 1) {
+    cout << "5. Social Security Number" << endl;
+    cout << "6. Annual Salary" << endl;
+    cout << "7. Department" << endl;
+    cout << "8. Tenure Status" << endl;
+    cin >> fieldNum;
+  }
+
+  else if (profileType == 2) {
+    cout << "5. Major" << endl;
+    cout << "6. Field of Study" << endl;
+    cout << "7. GPA" << endl;
+    cin >> fieldNum;
+  }
+
+  else if (profileType == 3) {
+    cout << "5. Social Security Number" << endl;
+    cout << "6. Annual Salary" << endl;
+    cout << "7. Department" << endl;
+    cout << "8. Job" << endl;
+    cin >> fieldNum;
+  }
+  return fieldNum;
+}
+  
 void DeleteProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<CollegeEmployee>& inEmployees) {
 
 }
