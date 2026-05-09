@@ -313,6 +313,7 @@ void DeleteStudent(vector<Student> currentStudents) {
 void menu(vector<Faculty>& currentFaculty, vector<Student>& currentStudents, vector<CollegeEmployee>& currentEmployees) {
     string query;
     int userChoice;
+    int deleteChoice;
 
     userChoice = 0;
 
@@ -347,20 +348,33 @@ void menu(vector<Faculty>& currentFaculty, vector<Student>& currentStudents, vec
         }
         
         else if (userChoice == 2) {
-          
+          PrintFaculty(currentFaculty);
+          PrintStudents(currentStudents);
+          PrintEmployees(currentEmployees);
         }
-
+          
         else if (userChoice == 3) {
-          EditProfile(currentFaculty, currentStudents, currentEmployees);
+          deleteChoice = ClassMenu();
+          if (deleteChoice == 1 && currentFaculty.size() > 0) {
+            DeleteFaculty(currentFaculty);
+          }
+
+          else if (deleteChoice == 2 && currentStudents.size() > 0) {
+            DeleteStudent(currentStudents);
+          }
+
+          else if (deleteChoice == 3 && currentStudents.size() > 0) {
+            DeleteEmployee(currentEmployees);
+          }
+
+          else {
+            cout << "Unknown error please contact your adminsitrator" << endl;
+          }
         }
 
         else if (userChoice == 4) {
-          PrintRoster(currentFaculty, currentStudents, currentEmployees);
-        }
-        else if (userChoice == 5) {
           exit(0);
         }
-
       }
       catch (invalid_argument) {
         cout << "Invalid Entry: Please try again!" << endl;
