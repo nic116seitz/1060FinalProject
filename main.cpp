@@ -210,56 +210,104 @@ void CreateFaculty(vector<Faculty>& facultyRoster) {
     }
   }
 }
-
-void PrintRoster(vector<Faculty> inFaculty, vector<Student> inStudent, vector<CollegeEmployee> inEmployees) {
+  
+void PrintFaculty (vector<Faculty> currentFaculty) {
   int i;
   int vectorSize;
-  Faculty currentFaculty;
-  Student currentStudent;
-  CollegeEmployee currentEmployee;
-  int rosterCount;
+  Faculty facultyMember;
   
-  vectorSize = inFaculty.size();
+  cout << "***Faculty Profiles**" << endl;
+  cout << "----------------------" << endl;
+
+  vectorSize = currentFaculty.size();
   if (vectorSize == 0) {
     cout << "Note: There are no faculty" << endl;
   }
 
   else {
     for (i = 0; i < vectorSize; ++i) {
-      currentFaculty = inFaculty.at(i);
+      facultyMember = currentFaculty.at(i);
       cout << i + 1 << ".";
-      currentFaculty.GetInfo();
+      facultyMember.GetInfo();
     }
-  }
-
-  vectorSize = inStudent.size();
-  if (vectorSize == 0) {
-    cout << "Note: There are no students" << endl;
-  }
-  
-  else {
-    for (i = 0; i < vectorSize; ++i) {
-      currentStudent = inStudent.at(i);
-      cout << i + 1 << ".";
-      currentStudent.GetInfo();
-    }
-  }
-  
-  vectorSize = inEmployees.size();
-  if (vectorSize == 0) {
-    cout << "Note: There are no non-faculty employees" << endl;
-  }
-
-  for (i = 0; i < vectorSize; ++i) {
-    currentEmployee = inEmployees.at(i);
-    cout << i + 1 << ".";
-    currentEmployee.GetInfo();
   }
 }
 
+void PrintStudents (vector<Student> currentStudents) {
+  int i;
+  int vectorSize;
+  Student student;
   
-void DeleteProfile(vector<Faculty>& inFaculty, vector<Student>& inStudent, vector<CollegeEmployee>& inEmployees) {
+  cout << "***Student Profiles**" << endl;
+  cout << "----------------------" << endl;
 
+  vectorSize = currentStudents.size();
+  if (vectorSize == 0) {
+    cout << "Note: There are no students" << endl;
+  }
+
+  else {
+    for (i = 0; i < vectorSize; ++i) {
+      student = currentStudents.at(i);
+      cout << i + 1 << ".";
+      student.GetInfo();
+    }
+  }
+}
+
+void PrintEmployees(vector<CollegeEmployee> currentEmployees) {
+  int i;
+  int vectorSize;
+  CollegeEmployee employee;
+  
+  cout << "***Student Profiles**" << endl;
+  cout << "----------------------" << endl;
+
+  vectorSize = currentEmployees.size();
+  if (vectorSize == 0) {
+    cout << "Note: There are no students" << endl;
+  }
+
+  else {
+    for (i = 0; i < vectorSize; ++i) {
+      employee = currentEmployees.at(i);
+      cout << i + 1 << ".";
+      employee.GetInfo();
+    }
+  }
+}
+
+void DeleteFaculty(vector<Faculty>& currentFaculty) {
+  int targIndex;
+
+  PrintFaculty(currentFaculty);
+  cout << "Please enter the number corresponding to the profile you";
+  cout << " would like to remove";
+  cin >> targIndex;
+  targIndex -= 1;
+  currentFaculty.erase(currentFaculty.begin() + targIndex);
+}
+
+void DeleteEmployee(vector<CollegeEmployee>& currentEmployees) {
+  int targIndex;
+
+  PrintEmployees(currentEmployees);
+  cout << "Please enter the number corresponding to the profile you";
+  cout << " would like to remove";
+  cin >> targIndex;
+  targIndex -= 1;
+  currentEmployees.erase(currentEmployees.begin() + targIndex);
+}
+
+void DeleteStudent(vector<Student> currentStudents) {
+  int targIndex;
+
+  PrintStudents(currentStudents);
+  cout << "Please enter the number corresponding to the profile you";
+  cout << " would like to remove";
+  cin >> targIndex;
+  targIndex -= 1;
+  currentStudents.erase(currentStudents.begin() + targIndex);
 }
 
 void menu(vector<Faculty>& currentFaculty, vector<Student>& currentStudents, vector<CollegeEmployee>& currentEmployees) {
@@ -299,7 +347,7 @@ void menu(vector<Faculty>& currentFaculty, vector<Student>& currentStudents, vec
         }
         
         else if (userChoice == 2) {
-          PrintRoster(currentFaculty, currentStudents, currentEmployees);
+          
         }
 
         else if (userChoice == 3) {
